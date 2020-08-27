@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Room.find(params[:room_id])
   end
+<<<<<<< Updated upstream
 
   def create
     @room = Room.find(params[:room_id])
@@ -23,3 +24,12 @@ class MessagesController < ApplicationController
   end
 
 end
+=======
+end
+
+private
+
+  def message_params
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+  end
+>>>>>>> Stashed changes
